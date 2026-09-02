@@ -25,6 +25,25 @@ Optional arguments:
 - `--model` to choose the OpenAI model for the final answer
 - `--show-context` to print the retrieved chunks before the answer
 
+## API
+
+Start the FastAPI server from the project root:
+
+```bash
+./ragenv/bin/uvicorn api:app --reload
+```
+
+Ask the document a question in another terminal:
+
+```bash
+curl "http://127.0.0.1:8000/query?query=What%20is%20TowerZ%3F"
+```
+
+`GET /query` accepts a required `query` parameter and optional `top_k` parameter
+(from 1 to 10). It returns the answer and the chunks supplied to OpenAI as context.
+
+The **docs** is available at: `http://127.0.0.1:8000/docs`
+
 ## How it works
 
 1. The script embeds your document and stores the chunks in FAISS.
@@ -50,11 +69,11 @@ Run the unit test from the project root after installing dependencies:
 
 ```bash
 source ragenv/bin/activate
-python -m unittest test_rag.py
+python -m unittest
 ```
 
 If you prefer not to activate the virtualenv, run the same test directly with the project interpreter:
 
 ```bash
-./ragenv/bin/python -m unittest test_rag.py
+./ragenv/bin/python -m unittest
 ```
