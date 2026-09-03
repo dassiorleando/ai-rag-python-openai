@@ -1,12 +1,18 @@
+import unittest
 from pathlib import Path
 from tempfile import TemporaryDirectory
-import unittest
 from types import SimpleNamespace
 
 from langchain_core.documents import Document
 from langchain_core.embeddings import Embeddings
 
-from rag import answer_question, build_prompt, build_vector_store, load_document_chunks, retrieve_chunks
+from rag import (
+    answer_question,
+    build_prompt,
+    build_vector_store,
+    load_document_chunks,
+    retrieve_chunks,
+)
 
 
 class KeywordEmbeddings(Embeddings):

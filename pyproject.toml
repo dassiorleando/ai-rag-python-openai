@@ -1,0 +1,55 @@
+[project]
+name = "multi-tenant-knowledge-assistant"
+version = "0.1.0"
+description = "A production-oriented, multi-tenant knowledge assistant capstone"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "fastapi==0.141.1",
+    "langchain-text-splitters==1.1.2",
+    "openai==3.5.0",
+    "pydantic==2.13.4",
+    "pydantic-settings==2.15.0",
+    "python-dotenv==1.2.3",
+    "tiktoken==0.14.0",
+    "uvicorn==0.52.4",
+]
+
+[project.optional-dependencies]
+stage0 = [
+    "faiss-cpu==1.15.0",
+    "langchain-community==0.4.2",
+    "langchain-core==1.6.1",
+    "langchain-openai==1.6.0",
+]
+dev = [
+    "mypy==1.18.2",
+    "pip-audit==2.9.0",
+    "ruff==0.13.2",
+]
+
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+include = ["knowledge_assistant*"]
+
+[tool.mypy]
+python_version = "3.11"
+files = ["knowledge_assistant", "api.py"]
+exclude = ["ragenv"]
+ignore_missing_imports = true
+follow_imports = "skip"
+warn_unused_configs = true
+warn_redundant_casts = true
+warn_unused_ignores = true
+no_implicit_optional = true
+
+[tool.ruff]
+target-version = "py311"
+line-length = 100
+exclude = ["ragenv"]
+
+[tool.ruff.lint]
+select = ["E4", "E7", "E9", "F", "I"]
