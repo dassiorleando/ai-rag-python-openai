@@ -42,7 +42,7 @@ orjson==3.12.0
 ormsgpack==1.12.2
 packaging==26.3
 propcache==0.5.2
-pydantic==2.13.4
+pydantic==2.13.5
 pydantic-settings==2.15.0
 pydantic_core==2.46.4
 python-dotenv==1.2.3
